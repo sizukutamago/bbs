@@ -13,7 +13,9 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "twig/twig": "^2.4",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "filp/whoops": "^2.1"
