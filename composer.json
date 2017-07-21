@@ -1,0 +1,16 @@
+{
+    "name": "sizukutamago/bbs",
+    "type": "project",
+    "autoload": {
+        "psr-4" : {
+            "SizukuBBS\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sizukutamago",
+            "email": "sizukutamago@gmail.com"
+        }
+    ],
+    "require": {}
+}
