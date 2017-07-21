@@ -12,7 +12,9 @@
             "email": "sizukutamago@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "vlucas/phpdotenv": "^2.4"
+    },
     "require-dev": {
         "filp/whoops": "^2.1"
     }
