@@ -12,5 +12,8 @@
             "email": "sizukutamago@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "filp/whoops": "^2.1"
+    }
 }
