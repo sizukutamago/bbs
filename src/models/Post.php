@@ -16,7 +16,7 @@ class Post extends \Model
 
     public function threads()
     {
-        return $this->belongs_to('Thread', 'id');
+        return $this->belongs_to('\SizukuBBS\models\Thread', 'id');
     }
 
 }
