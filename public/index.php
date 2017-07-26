@@ -24,3 +24,20 @@ $twig = new \Twig_Environment($loader, [
     'debug' => true,
 ]);
 
+$db_name = getenv('DB_NAME');
+$db_host = getenv('DB_HOST');
+$db_port = getenv('DB_PORT');
+
+ORM::configure([
+    'connection_string' => "mysql:dbname=$db_name;host=$db_host:$db_port:/tmp/mysql.sock;charset=utf8mb4",
+    'username' => getenv('DB_USER'),
+    'password' => getenv('DB_PASSWORD'),
+    'driver_options' => [
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'
+    ]
+]);
+
+
+$thread = \Model::factory('\SizukuBBS\models\Thread')->findOne(1);
+
+$posts = $thread->posts()->find_many();

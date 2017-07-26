@@ -4,3 +4,4 @@
 /.idea
 /*~
 /cache/twig/*
+/Phinx.yml

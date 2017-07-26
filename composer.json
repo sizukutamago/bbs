@@ -15,9 +15,13 @@
     "require": {
         "vlucas/phpdotenv": "^2.4",
         "twig/twig": "^2.4",
-        "twig/extensions": "^1.5"
+        "twig/extensions": "^1.5",
+        "j4mie/idiorm": "^1.5",
+        "j4mie/paris": "^1.5",
+        "robmorgan/Phinx": "^0.8.1"
     },
     "require-dev": {
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "digitalnature/php-ref": "^1.2"
     }
 }
