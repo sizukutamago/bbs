@@ -37,7 +37,3 @@ ORM::configure([
     ]
 ]);
 
-
-$thread = \Model::factory('\SizukuBBS\models\Thread')->findOne(1);
-
-$posts = $thread->posts()->find_many();
