@@ -18,7 +18,8 @@
         "twig/extensions": "^1.5",
         "j4mie/idiorm": "^1.5",
         "j4mie/paris": "^1.5",
-        "robmorgan/Phinx": "^0.8.1"
+        "robmorgan/Phinx": "^0.8.1",
+        "nikic/fast-route": "^1.2"
     },
     "require-dev": {
         "filp/whoops": "^2.1",
