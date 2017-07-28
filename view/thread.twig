@@ -1,0 +1,25 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}- {{ thread.title }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ thread.title }}</h1>
+
+    <ol>
+
+        {% for post in posts %}
+
+            <li>{{ post.message }}</li>
+
+        {% endfor %}
+
+    </ol>
+
+    <form method="post">
+        名前: <input type="text" name="name" value="名無しさん"/>
+        <input type="text" name="message"/>
+        <input type="submit" value="書き込む"/>
+    </form>
+
+{% endblock %}

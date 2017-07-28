@@ -1,0 +1,19 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}- {{ category.name }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ category.name }}</h1>
+
+    <ul>
+        {% for thread in threads %}
+
+            <li>
+                <a href="/thread/{{ thread.id }}">{{ thread.title }}</a>
+            </li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}

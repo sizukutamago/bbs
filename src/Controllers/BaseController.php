@@ -14,14 +14,19 @@ class BaseController
 
     public $twig;
 
-    final public function __construct()
+    final public function __construct($twig)
     {
-        $basedir = dirname(__DIR__) . '/..';
-        $loader = new \Twig_Loader_Filesystem($basedir . '/view');
-        $this->twig = new \Twig_Environment($loader, [
-            'cache' => $basedir . '/cache/twig',
-            'debug' => true,
-        ]);
+        $this->twig = $twig;
+    }
+
+    public function response($content)
+    {
+        if (!headers_sent()) {
+            header('Content-Type: text/html; charset=utf-8');
+            header('Content-Length: ' . strlen($content));
+        }
+
+        echo $content;
     }
 
 }

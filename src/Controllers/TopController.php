@@ -16,11 +16,9 @@ class TopController extends BaseController
         $categories = \Model::factory('\SizukuBBS\models\Category')->find_many();
 
         $content = $this->twig->render('index.twig', [
-            'categories' => $categories,
+            'categories' => $categories
         ]);
 
-        header('Content-Type: text/html; charset=utf-8');
-        header('Content-Length: ' . strlen($content));
-        echo $content;
+        $this->response($content);
     }
 }

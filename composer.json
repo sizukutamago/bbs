@@ -2,6 +2,7 @@
     "name": "sizukutamago/bbs",
     "type": "project",
     "autoload": {
+        "files" : ["src/functions.php"],
         "psr-4" : {
             "SizukuBBS\\": "src/"
         }
