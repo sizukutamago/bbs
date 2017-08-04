@@ -6,7 +6,12 @@
  * Time: 14:55
  */
 
-function env(string $key, $default = null)
+/**
+ * @param string $key
+ * @param string $default
+ * @return string
+ */
+function env(string $key, $default = '') : string
 {
     if (getenv($key)) {
         return getenv($key);

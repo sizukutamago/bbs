@@ -1,0 +1,43 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %} - 新規スレ立て{% endblock %}
+
+{% block content %}
+
+    {% if v.errors %}
+        <ul>
+            {% for errors in v.errors %}
+
+                {% for error in errors %}
+
+                    <li>{{ error }}</li>
+
+                {% endfor %}
+
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        <p>カテゴリー</p>
+        <select name="category">
+            {% for category in categories %}
+
+                <option value="{{ category.id }}">{{ category.name }}</option>
+
+            {% endfor %}
+        </select>
+
+        <p>タイトル</p>
+        <input type="text" name="title">
+
+        <p>名前</p>
+        <input type="text" name="name">
+
+        <p>本文</p>
+        <input type="text" name="message">
+
+        <input type="submit" value="作成">
+    </form>
+
+{% endblock %}

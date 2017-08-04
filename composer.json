@@ -20,7 +20,10 @@
         "j4mie/idiorm": "^1.5",
         "j4mie/paris": "^1.5",
         "robmorgan/Phinx": "^0.8.1",
-        "nikic/fast-route": "^1.2"
+        "nikic/fast-route": "^1.2",
+        "monolog/monolog": "^1.23",
+        "vlucas/valitron": "^1.4",
+        "nesbot/carbon": "^1.22"
     },
     "require-dev": {
         "filp/whoops": "^2.1",

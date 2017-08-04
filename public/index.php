@@ -1,28 +1,34 @@
 <?php
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+$basedir = dirname(__DIR__);
+
+require_once $basedir . '/vendor/autoload.php';
 
 
 //.envの読み込み
-$dotenv = new \Dotenv\Dotenv(dirname(__DIR__));
+$dotenv = new \Dotenv\Dotenv($basedir);
 $dotenv->load();
 
-if (env('APP_ENV', 'production') === 'production') {
-    //全てのエラーを非表示
-    error_reporting(0);
-} else {
-    //全てのエラーを表示
-    error_reporting(E_ALL);
+//全てのエラーを表示
+error_reporting(E_ALL);
 
+if (env('APP_ENV', 'production') === 'production') {
+    //エラーを画面に表示させない
+    ini_set('display_errors', 0);
+
+} else {
     $whoops = new \Whoops\Run();
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
     $whoops->register();
 }
+
+$logger = new \Monolog\Logger('SizukBBS');
+$logger->pushHandler(new \Monolog\Handler\SlackHandler(env('SLACK_TOKEN'), env('SLACK_CHANNEL'), env('SLACK_NAME'), true, null, \Monolog\Logger::DEBUG));
+
 //timezoneを日本に
 date_default_timezone_set(env('TIME_ZONE', 'Asia/Tokyo'));
 
 //twigの設定
-$basedir = dirname(__DIR__);
 $loader = new \Twig_Loader_Filesystem($basedir . '/view');
 $twig = new \Twig_Environment($loader, [
     'cache' => $basedir . '/cache/twig',
@@ -37,7 +43,7 @@ $db_port = env('DB_PORT');
 ORM::configure([
     'connection_string' => "mysql:dbname=$db_name;host=$db_host:$db_port:/tmp/mysql.sock;charset=utf8mb4",
     'username' => env('DB_USER'),
-    'password' => env('DB_PASSWORD'),
+    'password' => env('DB_PASSWORD', ''),
     'driver_options' => [
         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'
     ]
@@ -49,8 +55,8 @@ $routes = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->get('/category/{id}', '\SizukuBBS\Controllers\ThreadController@showCategory');
     $r->get('/thread/{id}', '\SizukuBBS\Controllers\ThreadController@showThread');
     $r->post('/thread/{id}', '\SizukuBBS\Controllers\ThreadController@postMessage');
-    $r->get('/thread/{id}/create', '\SizukuBBS\Controllers\ThreadController@showCreateThread');
-    $r->post('/thread/{id}/create', '\SizukuBBS\Controllers\ThreadController@createThread');
+    $r->get('/create', '\SizukuBBS\Controllers\ThreadController@showCreateThread');
+    $r->post('/create', '\SizukuBBS\Controllers\ThreadController@createThread');
 });
 
 // リクエストパラメータを取得する

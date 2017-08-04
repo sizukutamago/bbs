@@ -8,12 +8,14 @@
 
 namespace SizukuBBS\Controllers;
 
+use SizukuBBS\models\Category;
+
 class TopController extends BaseController
 {
 
     public function index()
     {
-        $categories = \Model::factory('\SizukuBBS\models\Category')->find_many();
+        $categories = Category::find_many();
 
         $content = $this->twig->render('index.twig', [
             'categories' => $categories
