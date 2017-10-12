@@ -9,9 +9,9 @@
 namespace SizukuBBS\Controllers;
 
 use Carbon\Carbon;
-use SizukuBBS\models\Category;
-use SizukuBBS\models\Post;
-use SizukuBBS\models\Thread;
+use SizukuBBS\Models\Category;
+use SizukuBBS\Models\Post;
+use SizukuBBS\Models\Thread;
 use Valitron\Validator;
 
 class ThreadController extends BaseController

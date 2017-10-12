@@ -11,11 +11,15 @@
  * @param string $default
  * @return string
  */
-function env(string $key, $default = '') : string
-{
-    if (getenv($key)) {
-        return getenv($key);
+if (!function_exists('env')) {
+
+    function env(string $key, $default = ''): string
+    {
+        if (getenv($key)) {
+            return getenv($key);
+        }
+
+        return $default;
     }
 
-    return $default;
 }

@@ -8,7 +8,7 @@
 
 namespace SizukuBBS\Controllers;
 
-use SizukuBBS\models\Category;
+use SizukuBBS\Models\Category;
 
 class TopController extends BaseController
 {

@@ -6,7 +6,7 @@
  * Time: 20:28
  */
 
-namespace SizukuBBS\models;
+namespace SizukuBBS\Models;
 
 
 class Category extends \Model
@@ -16,6 +16,6 @@ class Category extends \Model
 
     public function threads()
     {
-        return $this->has_many('\SizukuBBS\models\Thread', 'category_id');
+        return $this->has_many('\SizukuBBS\Models\Thread', 'category_id');
     }
 }

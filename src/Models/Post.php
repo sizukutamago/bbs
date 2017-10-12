@@ -6,7 +6,7 @@
  * Time: 19:48
  */
 
-namespace SizukuBBS\models;
+namespace SizukuBBS\Models;
 
 
 class Post extends \Model
@@ -16,7 +16,7 @@ class Post extends \Model
 
     public function threads()
     {
-        return $this->belongs_to('\SizukuBBS\models\Thread', 'id');
+        return $this->belongs_to('\SizukuBBS\Models\Thread', 'id');
     }
 
 }
