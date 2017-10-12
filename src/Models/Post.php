@@ -18,5 +18,4 @@ class Post extends \Model
     {
         return $this->belongs_to('\SizukuBBS\Models\Thread', 'id');
     }
-
 }

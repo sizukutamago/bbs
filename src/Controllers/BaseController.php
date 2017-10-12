@@ -28,5 +28,4 @@ abstract class BaseController
 
         echo $content;
     }
-
 }

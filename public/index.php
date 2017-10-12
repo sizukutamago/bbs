@@ -1,9 +1,7 @@
 <?php
-
 $basedir = dirname(__DIR__);
 
 require_once $basedir . '/vendor/autoload.php';
-
 
 //.envの読み込み
 $dotenv = new \Dotenv\Dotenv($basedir);
@@ -16,14 +14,13 @@ if (env('APP_ENV', 'production') === 'production') {
     //エラーを画面に表示させない
     ini_set('display_errors', 0);
 
+    $logger = new \Monolog\Logger('SizukBBS');
+    $logger->pushHandler(new \Monolog\Handler\SlackHandler(env('SLACK_TOKEN'), env('SLACK_CHANNEL'), env('SLACK_NAME'), true, null, \Monolog\Logger::DEBUG));
 } else {
     $whoops = new \Whoops\Run();
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
     $whoops->register();
 }
-
-$logger = new \Monolog\Logger('SizukBBS');
-$logger->pushHandler(new \Monolog\Handler\SlackHandler(env('SLACK_TOKEN'), env('SLACK_CHANNEL'), env('SLACK_NAME'), true, null, \Monolog\Logger::DEBUG));
 
 //timezoneを日本に
 date_default_timezone_set(env('TIME_ZONE', 'Asia/Tokyo'));

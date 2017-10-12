@@ -61,7 +61,6 @@ class ThreadController extends BaseController
             $post->user_hash_id = hash('crc32', Carbon::today() . $_SERVER['REMOTE_ADDR']);
             $post->ip_addr = $_SERVER['REMOTE_ADDR'];
             $post->save();
-
         }
 
         $thread = Thread::find_one($id);
@@ -74,7 +73,6 @@ class ThreadController extends BaseController
         ]);
 
         $this->response($content);
-
     }
 
     public function showCreateThread()
@@ -86,7 +84,6 @@ class ThreadController extends BaseController
         ]);
 
         $this->response($content);
-
     }
 
     public function createThread()
@@ -114,7 +111,6 @@ class ThreadController extends BaseController
             $post->user_hash_id = hash('crc32', Carbon::today() . $_SERVER['REMOTE_ADDR']);
             $post->ip_addr = $_SERVER['REMOTE_ADDR'];
             $post->save();
-
         }
 
         $categories = Category::find_many();
@@ -126,5 +122,4 @@ class ThreadController extends BaseController
 
         $this->response($content);
     }
-
 }
