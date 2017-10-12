@@ -9,7 +9,7 @@
 namespace SizukuBBS\Controllers;
 
 
-class BaseController
+abstract class BaseController
 {
 
     public $twig;

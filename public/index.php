@@ -85,17 +85,19 @@ switch ($routeInfo[0]) {
 
     case FastRoute\Dispatcher::NOT_FOUND:
         // Not Foundだった時
-        header("HTTP/1.1 404 Not Found");
+        header('HTTP', true, 404);
         echo "404 Not Found.";
         break;
 
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         // Method Not Allowedだった時
         $allowedMethods = $routeInfo[1];
+        header('HTTP', true, 405);
         echo "405 Method Not Allowed.  allow only=" . json_encode($allowedMethods);
         break;
 
     default:
+        header('HTTP', true, 500);
         echo "500 Server Error.";
         break;
 }
